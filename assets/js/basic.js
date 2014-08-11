@@ -8,6 +8,10 @@ $(function(){
 				description : "New Description",
 				id 			: Nodes.nextId()
 			}
+		},
+
+		save: function() {
+			console.log(this);
 		}
 	});
 
@@ -35,10 +39,8 @@ $(function(){
 		template: _.template($('#node-template').html()),
 
 		events: {
-			'click .btn-node-edit'		: 'editNode',
+			'click .btn-node-save'		: 'saveNode',
 			'click .btn-node-delete'	: 'deleteNode',
-			'focus .node-title'			: 'focusNode',
-			'focusout .node-title'		: 'blurNode'
 		},
 
 		initialize: function() {
@@ -49,6 +51,12 @@ $(function(){
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
+		},
+
+		saveNode: function() {
+			var title = this.$('.node-title').val();
+			var description = this.$('.node-description').val();
+			this.model.save({});
 		},
 
 		deleteNode: function() {
