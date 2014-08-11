@@ -3,10 +3,11 @@
 	<head>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/style.css"/>
+		<title>CPDOne Backbone JS</title>
 	</head>
 	<body>
 		<main>
-			<h1>Backbone JS (Node)</h1><a href="index.php" style="display: none;">Todo</a>
+			<h1>Backbone JS</h1><a href="index.php" style="display: none;">Todo</a>
 			<div id="nodeapp">
 				<header>
 					<input id="new-node" type="text" placeholder="Enter title">
@@ -27,7 +28,7 @@
 	<script src="assets/js/basic.js"></script>
 
 	<script type="text/template" id="node-template">
-		<div class="node" id="<%- id %>">
+		<div class="node" id="node-<%- id %>">
 			<input type="text" placeholder="Enter title" class="node-title" value="<%- title %>" />
 			<input type="text" placeholder="Enter description" class="node-description" value="<%- description %>" />
 			<input type="button" value="Edit" class="btn-node-edit hide" />

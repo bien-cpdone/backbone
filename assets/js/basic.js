@@ -6,7 +6,7 @@ $(function(){
 			return {
 				title		: "New Title",
 				description : "New Description",
-				id 			: 0
+				id 			: Nodes.nextId()
 			}
 		}
 	});
@@ -17,6 +17,11 @@ $(function(){
 		model: Node,
 
 		localStorage: new Backbone.LocalStorage("node-backbone"),
+
+		nextId: function() {
+			if (!this.length) return 1;
+			return this.last().get('id') + 1;
+		},
 
 		comparator: 'id'
 	});
@@ -46,22 +51,6 @@ $(function(){
 			return this;
 		},
 
-		// editNode: function() {
-		// 	console.log('Invoked edit Node');
-		// 	this.$('.node-title').focus();
-		// 	this.$('.node-title').select();
-		// },
-
-		// focusNode: function() {
-		// 	console.log('Invoked focus Node');
-		// 	this.$('.node-title').addClass('edit-node');
-		// },
-
-		// blurNode: function() {
-		// 	console.log('Invoked blur Node');
-		// 	this.$('.node-title').removeClass('edit-node');
-		// },
-
 		deleteNode: function() {
 			this.model.destroy();
 		}
@@ -74,8 +63,8 @@ $(function(){
 		el: $('#nodeapp'),
 
 		events: {
-			'keypress #new-node': "createOnEnter",
-			'click #new-submit' : "createOnSubmit"
+			'click #new-submit' : "createOnSubmit",
+			'keypress #new-description': "createOnEnter"
 		},
 
 		initialize: function() {
@@ -107,14 +96,7 @@ $(function(){
 			if (e.keyCode != 13) return;
 			if (!this.title.val()) return;
 
-			console.log("Invoked createOnSubmit()");
-			Nodes.create(
-				{
-					title 		 : this.title.val(), 
-					description  : this.description.val()
-				});
-			this.title.val('');
-			this.description.val('');
+			this.createOnSubmit();
 		},
 
 		createOnSubmit: function() {
@@ -127,9 +109,8 @@ $(function(){
 				});
 			this.title.val('');
 			this.description.val('');
+			this.title.focus();
 		}
 	});
 	var App = new AppView;
 });
-
-

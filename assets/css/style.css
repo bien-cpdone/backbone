@@ -225,6 +225,12 @@ ul {
 	list-style: none;
 	padding: 0;
 }
+ul li {
+	margin-top: 10px;
+}
+ul li:first-child {
+	margin-top: 0;
+}
 #main {
 	padding: 20px;
 	background: #e4e4e4;
@@ -245,6 +251,7 @@ ul {
 }
 .node-title {
 	font-weight: bold;
+	margin-right: 5px;
 }
 .node-title, .node-description {
 	width: 150px;
@@ -252,14 +259,13 @@ ul {
 	border: 1px solid #ccc;
 }
 .node-description {
-	width: 270px;
+	width: 255px;
 }
 .edit-node {
 	border: 1px solid #ccc;
 }
 .btn-node-edit, .btn-node-delete {
     float: right;
-    padding: 5px 10px;
+    padding: 10px 14px;
     position: relative;
-    top: 4px;
 }
