@@ -8,10 +8,6 @@ $(function(){
 				description : "New Description",
 				id 			: Nodes.nextId()
 			}
-		},
-
-		save: function() {
-			console.log(this);
 		}
 	});
 
@@ -54,9 +50,10 @@ $(function(){
 		},
 
 		saveNode: function() {
-			var title = this.$('.node-title').val();
-			var description = this.$('.node-description').val();
-			this.model.save({});
+			var inputTitle = this.$('.node-title').val();
+			var inputDescription = this.$('.node-description').val();
+			console.log(inputTitle + " " + inputDescription)
+			this.model.save({title: inputTitle, description: inputDescription});
 		},
 
 		deleteNode: function() {
