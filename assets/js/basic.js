@@ -1,6 +1,6 @@
 $(function(){
 
-	var Node = Backbone.Model.extend({
+	var Node = Backbone.NestedModel.extend({
 
 		defaults: function() {
 			return {
@@ -35,8 +35,10 @@ $(function(){
 		template: _.template($('#node-template').html()),
 
 		events: {
-			'click .btn-node-save'		: 'saveNode',
-			'click .btn-node-delete'	: 'deleteNode',
+			'click .btn-node-save'		 : 'saveNode',
+			'click .btn-node-delete'	 : 'deleteNode',
+			'keypress .node-title'		 : 'saveNodeOnEnter',
+			'keypress .node-description' : 'saveNodeOnEnter'
 		},
 
 		initialize: function() {
@@ -54,6 +56,12 @@ $(function(){
 			var inputDescription = this.$('.node-description').val();
 			console.log(inputTitle + " " + inputDescription)
 			this.model.save({title: inputTitle, description: inputDescription});
+			$('.alert.saved').showLimitedTime(2500);
+		},
+
+		saveNodeOnEnter: function(e) {
+			if (e.keyCode != 13) return;
+			this.saveNode();
 		},
 
 		deleteNode: function() {
@@ -68,8 +76,9 @@ $(function(){
 		el: $('#nodeapp'),
 
 		events: {
-			'click #new-submit' : "createOnSubmit",
-			'keypress #new-description': "createOnEnter"
+			'click #new-submit' 		: "createOnSubmit",
+			'keypress #new-description'	: "createOnEnter",
+			'click #add-button'			: "showAddDialog"
 		},
 
 		initialize: function() {
@@ -79,7 +88,6 @@ $(function(){
 			this.main  		 = this.$('#main');
 			this.listenTo(Nodes, 'add', this.addOne);
 			this.listenTo(Nodes, 'all', this.render);
-
 			Nodes.fetch();
 		},
 
@@ -90,6 +98,11 @@ $(function(){
 			} else {
 				this.main.hide();
 			}
+		},
+
+		showAddDialog: function(e) {
+			$(e.target).hide();
+			this.$('.add-dialog').showElement();
 		},
 
 		addOne: function(node) {
@@ -115,7 +128,32 @@ $(function(){
 			this.title.val('');
 			this.description.val('');
 			this.title.focus();
+			$('#add-button').showElement();
+			$('.add-dialog').hideElement();
+			$('.alert.added').showLimitedTime(2500);
 		}
 	});
 	var App = new AppView;
+
+	$.fn.showLimitedTime = function(duration) {
+		return this.each(function(){
+			$this = $(this);
+			$this.removeAttr('style').removeClass('hide').fadeOut(duration);
+			setTimeout(function(){
+				$this.removeAttr('style').addClass('hide');
+			}, duration)
+		});
+	};
+
+	$.fn.showElement = function() {
+		return this.each(function(){
+			$(this).removeAttr('style').removeClass('hide');
+		});
+	};
+
+	$.fn.hideElement = function() {
+		return this.each(function(){
+			$(this).removeAttr('style').addClass('hide');
+		});
+	};
 });
