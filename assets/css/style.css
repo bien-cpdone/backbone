@@ -9,7 +9,7 @@ body {
 	line-height: 1.4em;
 	background: #eeeeee;
 	color: #333333;
-	width: 520px;
+	width: 600px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 }
@@ -231,21 +231,24 @@ ul li {
 ul li:first-child {
 	margin-top: 0;
 }
+.hide {
+	display: none;
+}
 #main {
 	padding: 20px;
 	background: #e4e4e4;
-	margin-top: 30px;
-	width: 500px;
+	margin-top: 20px;
+	width: 600px;
 }
 #new-node, #new-description {
-	width: 500px;
+	width: 600px;
 	font-size: 18px;
 	border: 1px solid #ccc;
 	padding: 12px;
 	margin-bottom: 10px;
 }
 #new-submit {
-	width: 500px;
+	width: 600px;
 	padding: 10px 0;
 	font-size: 18px;
 }
@@ -259,16 +262,25 @@ ul li:first-child {
 	border: 1px solid #ccc;
 }
 .node-description {
-	width: 215px;
+	width: 269px;
 }
 .edit-node {
 	border: 1px solid #ccc;
 }
-.btn-node-save, .btn-node-delete {
+.btn-node-save, .btn-node-delete, .btn-node-add {
     float: right;
     padding: 8px 12px;
     position: relative;
 }
-.btn-node-save {
+.btn-node-save, .btn-node-add {
 	margin-right: 7px;
+}
+#nodeapp .alert {
+	width: 600px;
+	margin: 20px 0 0;
+}
+#add-button {
+	width: 250px;
+	padding: 10px 0;
+	margin-top: 30px;
 }

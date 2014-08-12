@@ -9,11 +9,16 @@
 		<main>
 			<h1>Backbone JS</h1><a href="index.php" style="display: none;">Todo</a>
 			<div id="nodeapp">
-				<header>
+				<button id="add-button" class="btn btn-primary">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;<strong>Add Node</strong>
+				</button>
+				<header class="add-dialog hide">
 					<input id="new-node" type="text" placeholder="Enter title">
 					<input id="new-description" type="text" placeholder="Enter description">
-					<button id="new-submit" class="btn btn-primary">Create Node</button>
+					<button id="new-submit" class="btn btn-primary"><strong>Create</strong></button>
 				</header>
+				<div class="alert alert-success saved hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully modified.</div>
+				<div class="alert alert-success added hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully added.</div>
 				<section id="main">
 				<ul id="node-list"></ul>
 			    </section>
@@ -25,6 +30,7 @@
 	<script src="assets/js/underscore.js"></script>
 	<script src="assets/js/backbone.js"></script>
 	<script src="assets/js/backbone.localStorage.js"></script>
+	<script src="assets/js/backbone.nested.js"></script>
 	<script src="assets/js/basic.js"></script>
 
 	<script type="text/template" id="node-template">
@@ -33,6 +39,9 @@
 			<input type="text" placeholder="Enter description" class="node-description" value="<%- description %>" />
 			<button class="btn btn-danger btn-node-delete">
 				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+			<button class="btn btn-warning btn-node-add">
+				<span class="glyphicon glyphicon-plus"></span>
 			</button>
 			<button class="btn btn-success btn-node-save">
 				<span class="glyphicon glyphicon-ok"></span>
