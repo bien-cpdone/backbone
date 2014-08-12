@@ -35,10 +35,8 @@ $(function(){
 		template: _.template($('#node-template').html()),
 
 		events: {
-			'click .btn-node-edit'		: 'editNode',
+			'click .btn-node-save'		: 'saveNode',
 			'click .btn-node-delete'	: 'deleteNode',
-			'focus .node-title'			: 'focusNode',
-			'focusout .node-title'		: 'blurNode'
 		},
 
 		initialize: function() {
@@ -49,6 +47,13 @@ $(function(){
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
+		},
+
+		saveNode: function() {
+			var inputTitle = this.$('.node-title').val();
+			var inputDescription = this.$('.node-description').val();
+			console.log(inputTitle + " " + inputDescription)
+			this.model.save({title: inputTitle, description: inputDescription});
 		},
 
 		deleteNode: function() {

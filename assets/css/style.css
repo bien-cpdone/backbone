@@ -254,18 +254,21 @@ ul li:first-child {
 	margin-right: 5px;
 }
 .node-title, .node-description {
-	width: 150px;
+	width: 140px;
 	padding: 10px;
 	border: 1px solid #ccc;
 }
 .node-description {
-	width: 255px;
+	width: 215px;
 }
 .edit-node {
 	border: 1px solid #ccc;
 }
-.btn-node-edit, .btn-node-delete {
+.btn-node-save, .btn-node-delete {
     float: right;
-    padding: 10px 14px;
+    padding: 8px 12px;
     position: relative;
+}
+.btn-node-save {
+	margin-right: 7px;
 }
