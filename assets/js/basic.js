@@ -53,7 +53,6 @@ $(function(){
 		},
 
 		addNode: function() {
-			$('#add-button').hideElement();
 			$('#new-node').focus();
 		},
 
@@ -83,8 +82,7 @@ $(function(){
 
 		events: {
 			'click #new-submit' 		: "createOnSubmit",
-			'keypress #new-description'	: "createOnEnter",
-			'click #add-button'			: "showAddDialog"
+			'keypress #new-description'	: "createOnEnter"
 		},
 
 		initialize: function() {
@@ -104,11 +102,6 @@ $(function(){
 			} else {
 				this.main.hide();
 			}
-		},
-
-		showAddDialog: function(e) {
-			$(e.target).hide();
-			this.$('.add-dialog').showElement();
 		},
 
 		addOne: function(node) {
@@ -134,8 +127,6 @@ $(function(){
 			this.title.val('');
 			this.description.val('');
 			this.title.focus();
-			$('#add-button').showElement();
-			$('.add-dialog').hideElement();
 			$('#add-modal').modal('hide');
 			$('.alert.added').showLimitedTime(3500);
 		}

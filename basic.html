@@ -28,12 +28,9 @@
 			<main>
 				<h1>Backbone JS</h1><a href="index.php" style="display: none;">Todo</a>
 				<div>
-					<button id="add-button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+					<button id="add-button" class="btn btn-primary" data-toggle="modal" data-backdrop="static"  data-target="#add-modal">
 						<span class="glyphicon glyphicon-plus"></span>&nbsp;<strong>Add Node</strong>
 					</button>
-					<header class="add-dialog hide">
-						
-					</header>
 					<div class="alert alert-success saved hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully modified.</div>
 					<div class="alert alert-success added hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully added.</div>
 					<section id="main">
@@ -58,7 +55,7 @@
 			<button class="btn btn-danger btn-node-delete">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
-			<button class="btn btn-warning btn-node-add" data-toggle="modal" data-target="#add-modal">
+			<button class="btn btn-warning btn-node-add" data-toggle="modal" data-backdrop="static" data-target="#add-modal">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
 			<button class="btn btn-success btn-node-save">
