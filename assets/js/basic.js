@@ -36,6 +36,7 @@ $(function(){
 
 		events: {
 			'click .btn-node-save'		 : 'saveNode',
+			'click .btn-node-add'		 : 'addNode',
 			'click .btn-node-delete'	 : 'deleteNode',
 			'keypress .node-title'		 : 'saveNodeOnEnter',
 			'keypress .node-description' : 'saveNodeOnEnter'
@@ -49,6 +50,11 @@ $(function(){
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
+		},
+
+		addNode: function() {
+			$('#add-button').hideElement();
+			$('#new-node').focus();
 		},
 
 		saveNode: function() {
@@ -130,7 +136,8 @@ $(function(){
 			this.title.focus();
 			$('#add-button').showElement();
 			$('.add-dialog').hideElement();
-			$('.alert.added').showLimitedTime(2500);
+			$('#add-modal').modal('hide');
+			$('.alert.added').showLimitedTime(3500);
 		}
 	});
 	var App = new AppView;

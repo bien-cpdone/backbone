@@ -6,24 +6,42 @@
 		<title>CPDOne Backbone JS</title>
 	</head>
 	<body>
-		<main>
-			<h1>Backbone JS</h1><a href="index.php" style="display: none;">Todo</a>
-			<div id="nodeapp">
-				<button id="add-button" class="btn btn-primary">
-					<span class="glyphicon glyphicon-plus"></span>&nbsp;<strong>Add Node</strong>
-				</button>
-				<header class="add-dialog hide">
-					<input id="new-node" type="text" placeholder="Enter title">
-					<input id="new-description" type="text" placeholder="Enter description">
-					<button id="new-submit" class="btn btn-primary"><strong>Create</strong></button>
-				</header>
-				<div class="alert alert-success saved hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully modified.</div>
-				<div class="alert alert-success added hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully added.</div>
-				<section id="main">
-				<ul id="node-list"></ul>
-			    </section>
-			</div>
-		</main>
+	<div id="nodeapp">
+		<div id="add-modal" class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Node</h4>
+		      </div>
+		      <div class="modal-body">
+		        <input id="new-node" type="text" placeholder="Enter title">
+				<input id="new-description" type="text" placeholder="Enter description">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="new-submit" class="btn btn-primary"><strong>Create</strong></button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			<main>
+				<h1>Backbone JS</h1><a href="index.php" style="display: none;">Todo</a>
+				<div>
+					<button id="add-button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+						<span class="glyphicon glyphicon-plus"></span>&nbsp;<strong>Add Node</strong>
+					</button>
+					<header class="add-dialog hide">
+						
+					</header>
+					<div class="alert alert-success saved hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully modified.</div>
+					<div class="alert alert-success added hide" role="alert"><span class="glyphicon glyphicon-ok"></span>&nbsp;Node successfully added.</div>
+					<section id="main">
+					<ul id="node-list"></ul>
+				    </section>
+				</div>
+			</main>
+		</div>
 	</body>
 	<script src="assets/js/json2.js"></script>
 	<script src="assets/js/jquery.js"></script>
@@ -32,7 +50,7 @@
 	<script src="assets/js/backbone.localStorage.js"></script>
 	<script src="assets/js/backbone.nested.js"></script>
 	<script src="assets/js/basic.js"></script>
-
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/template" id="node-template">
 		<div class="node" id="node-<%- id %>">
 			<input type="text" placeholder="Enter title" class="node-title" value="<%- title %>" />
@@ -40,7 +58,7 @@
 			<button class="btn btn-danger btn-node-delete">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
-			<button class="btn btn-warning btn-node-add">
+			<button class="btn btn-warning btn-node-add" data-toggle="modal" data-target="#add-modal">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
 			<button class="btn btn-success btn-node-save">
