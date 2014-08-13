@@ -6,7 +6,8 @@ $(function(){
 			return {
 				title		: "New Title",
 				description : "New Description",
-				id 			: Nodes.nextId()
+				id 			: Nodes.nextId(),
+				node 		: []
 			}
 		}
 	});
@@ -37,6 +38,7 @@ $(function(){
 		events: {
 			'click .btn-node-save'		 : 'saveNode',
 			'click .btn-node-add'		 : 'addNode',
+			'click .btn-node-addnode'	 : 'addNode2',
 			'click .btn-node-delete'	 : 'deleteNode',
 			'keypress .node-title'		 : 'saveNodeOnEnter',
 			'keypress .node-description' : 'saveNodeOnEnter'
@@ -54,6 +56,15 @@ $(function(){
 
 		addNode: function() {
 			$('#new-node').focus();
+		},
+
+		addNode2: function() {
+			console.log('add2')
+			this.model.set('node', {
+				title: 'bien2',
+				description: 'angelo2'
+			});
+			console.log('added?')
 		},
 
 		saveNode: function() {
